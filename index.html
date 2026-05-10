@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como Investir no Bitcoin no Melhor Momento — Rafael Ghisi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface2: #161616;
+      --border: #222222;
+      --accent: #f7931a;
+      --accent-dim: rgba(247,147,26,0.12);
+      --text: #f0f0f0;
+      --text-muted: #888;
+      --text-dim: #555;
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .nav-cta {
+      background: var(--accent);
+      color: #000;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* HERO */
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 100px 40px 80px;
+      text-align: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 16px;
+      line-height: 1.7;
+    }
+    /* NEW: headline específica */
+    .hero-specific {
+      font-size: 0.95rem;
+      color: var(--accent);
+      font-weight: 500;
+      max-width: 540px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+      border-left: 2px solid var(--accent);
+      padding-left: 14px;
+      text-align: left;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .hero-trust {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+    }
+
+    /* BITCOIN ICON */
+    .btc-icon {
+      text-align: center;
+      font-size: 3rem;
+      margin: 0 0 60px;
+      opacity: 0.15;
+    }
+
+    /* LEARN STRIP */
+    .learn-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .learn-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    .learn-item {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 5px 14px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+    }
+
+    /* PRICE PILL in hero */
+    .price-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 8px 20px;
+      margin-bottom: 28px;
+      font-size: 0.85rem;
+    }
+    .price-pill del { color: var(--text-dim); }
+    .price-pill strong { color: var(--accent); font-size: 1rem; }
+    .price-pill span { color: var(--text-muted); font-size: 0.75rem; }
+
+    /* SECTION WRAPPER */
+    section { padding: 80px 40px; max-width: 860px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+
+    /* PROBLEM */
+    .problem-intro {
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 48px;
+      line-height: 1.8;
+    }
+    .problem-intro strong { color: var(--text); }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .problem-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .problem-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    .problem-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .problem-card p { font-size: 0.88rem; color: var(--text-muted); }
+
+    /* CURRICULUM */
+    .curriculum-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 12px;
+    }
+    .curriculum-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .curriculum-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .curriculum-card p { font-size: 0.88rem; color: var(--text-muted); }
+
+    /* TESTIMONIALS */
+    .testimonials-section { background: var(--surface2); }
+    .testimonials-section > div { max-width: 860px; margin: 0 auto; padding: 80px 40px; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .testimonial-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .testimonial-text {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .testimonial-text::before { content: '"'; color: var(--accent); font-size: 1.2rem; }
+    .testimonial-text::after  { content: '"'; color: var(--accent); font-size: 1.2rem; }
+    .testimonial-name {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+    }
+
+    /* ABOUT */
+    .about-inner {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .about-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border);
+    }
+    .about-bio { color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; }
+    .about-bio p { margin-bottom: 14px; }
+    .about-bio strong { color: var(--text); }
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .badge {
+      font-size: 0.73rem;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .badge-tiktok { border-color: var(--accent); color: var(--accent); }
+
+    /* OFFER */
+    .offer-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
+      max-width: 600px;
+    }
+    .offer-list { list-style: none; margin: 24px 0 36px; }
+    .offer-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .offer-list li::before { content: '✓'; color: var(--accent); font-weight: 700; }
+    .offer-list li:last-child { border-bottom: none; }
+    .offer-price {
+      margin-bottom: 24px;
+    }
+    .offer-price del { color: var(--text-dim); font-size: 0.9rem; }
+    .offer-price .big { font-family: 'Syne', sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--accent); display: block; margin-top: 4px; }
+    .offer-promo-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    .offer-guarantee {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      text-align: center;
+      margin-top: 14px;
+    }
+
+    /* FAQ */
+    .faq-list { margin-top: 12px; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.95rem;
+      gap: 16px;
+    }
+    .faq-q .icon { color: var(--accent); font-size: 1.1rem; transition: transform 0.25s; flex-shrink: 0; }
+    .faq-item.open .faq-q .icon { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s;
+    }
+    .faq-item.open .faq-a { max-height: 200px; padding-top: 14px; }
+
+    /* FINAL CTA */
+    .final-cta {
+      text-align: center;
+      padding: 80px 40px;
+      border-top: 1px solid var(--border);
+      max-width: 660px;
+      margin: 0 auto;
+    }
+    .final-cta h2 { margin-bottom: 8px; }
+    .final-cta p { color: var(--text-muted); margin-bottom: 32px; font-size: 0.95rem; }
+
+    /* DISCLAIMER */
+    .disclaimer-bar {
+      background: var(--surface2);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 14px 40px;
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+    .footer-logo { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .hero { padding: 60px 20px 60px; }
+      section { padding: 60px 20px; }
+      .problem-grid, .curriculum-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-img { width: 120px; height: 120px; }
+      .offer-box { padding: 28px 20px; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+      .learn-strip { padding: 16px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">Rafael Ghisi</span>
+    <a class="nav-cta" href="https://pay.hotmart.com/B105030058Y">Inscreva-se →</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="hero-tag">Rafael Ghisi · Curso Online</span>
+    <h1>Como Investir no Bitcoin no Melhor Momento.</h1>
+    <p class="hero-subtitle">Aprenda a identificar o momento certo de comprar Bitcoin — com base na Escola Austríaca de Economia, análise de mercado e estratégias práticas para iniciantes.</p>
+
+    <!-- NOVA HEADLINE ESPECÍFICA -->
+    <p class="hero-specific">Como identificar o momento certo de comprar Bitcoin — e parar de perder dinheiro por timing errado.</p>
+
+    <div class="price-pill">
+      <del>R$ 147,00</del>
+      <strong>R$ 39,90</strong>
+      <span>· Promoção ativa</span>
+    </div>
+
+    <div class="hero-ctas">
+      <a class="btn-primary" href="https://pay.hotmart.com/B105030058Y">Inscreva-se no Curso</a>
+      <span class="hero-trust">Acesso imediato · Garantia de 7 dias</span>
+    </div>
+  </div>
+
+  <div class="btc-icon">₿</div>
+
+  <!-- LEARN STRIP -->
+  <div class="learn-strip">
+    <span class="learn-tag">Você vai aprender</span>
+    <span class="learn-item">O que é Bitcoin de verdade</span>
+    <span class="learn-item">Timing de entrada</span>
+    <span class="learn-item">Escola Austríaca</span>
+    <span class="learn-item">Compra com privacidade</span>
+  </div>
+
+  <!-- PROBLEMA -->
+  <section>
+    <p class="section-label">O Problema</p>
+    <h2>A maioria<br>compra<br>errado.</h2>
+    <p class="problem-intro">
+      Você já viu o Bitcoin subir e ficou com medo de entrar. Depois caiu e você ficou sem saber se era hora de comprar ou esperar cair mais.<br><br>
+      <strong>Isso não é falta de coragem. É falta de método.</strong> Neste curso você vai entender a lógica por trás do Bitcoin e aprender a reconhecer os melhores momentos de entrada — sem precisar torcer para acertar.
+    </p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <p class="problem-num">01</p>
+        <h3>Compra por impulso no topo</h3>
+        <p>FOMO leva a maioria a comprar exatamente quando não deveria.</p>
+      </div>
+      <div class="problem-card">
+        <p class="problem-num">02</p>
+        <h3>Vende no fundo por medo</h3>
+        <p>Sem entender o ativo, qualquer queda vira motivo de pânico e prejuízo.</p>
+      </div>
+      <div class="problem-card">
+        <p class="problem-num">03</p>
+        <h3>Não sabe o que está comprando</h3>
+        <p>Compra porque "todo mundo está comprando" — sem entender o fundamento.</p>
+      </div>
+      <div class="problem-card">
+        <p class="problem-num">04</p>
+        <h3>Não tem estratégia de saída</h3>
+        <p>Lucra pouco ou não realiza lucro porque não sabe quando sair.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRÍCULO -->
+  <section>
+    <p class="section-label">Conteúdo do Curso</p>
+    <h2>O que você<br>vai aprender.</h2>
+    <div class="curriculum-grid">
+      <div class="curriculum-card">
+        <p class="problem-num">01</p>
+        <h3>O que é o Bitcoin, de verdade</h3>
+        <p>Entenda a origem, a tecnologia e por que o Bitcoin é diferente de qualquer outro ativo financeiro que já existiu.</p>
+      </div>
+      <div class="curriculum-card">
+        <p class="problem-num">02</p>
+        <h3>Escola Austríaca e Teoria do Valor Subjetivo</h3>
+        <p>Descubra a base econômica que explica por que o Bitcoin tem valor — e por que esse valor tende a crescer com o tempo.</p>
+      </div>
+      <div class="curriculum-card">
+        <p class="problem-num">03</p>
+        <h3>Como analisar o melhor momento de entrada</h3>
+        <p>Aprenda os indicadores e sinais que revelam quando o mercado está em zona de acumulação — e quando esperar.</p>
+      </div>
+      <div class="curriculum-card">
+        <p class="problem-num">04</p>
+        <h3>Como investir na prática, com anonimato</h3>
+        <p>Passo a passo para comprar Bitcoin de forma segura, sem exposição desnecessária e preservando sua privacidade financeira.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <div class="testimonials-section">
+    <div>
+      <p class="section-label">O que dizem sobre o conteúdo</p>
+      <h2>Quem assiste,<br>aprende.</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-text">Você tá me ajudando muito com isso, agora sim eu entendi certinho</p>
+          <p class="testimonial-name">@opm vixs</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">Sempre levando conteúdo de muito valor! Boa</p>
+          <p class="testimonial-name">@Rodrigo</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">Tu ensina muito bem cara</p>
+          <p class="testimonial-name">@Gabriel</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">Bela explicação!</p>
+          <p class="testimonial-name">@Kátia</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">Como eu aprendo mais contigo?</p>
+          <p class="testimonial-name">@Oliver</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">Gênio</p>
+          <p class="testimonial-name">@Carol</p>
+        </div>
+        <div class="testimonial-card" style="grid-column: 1 / -1;">
+          <p class="testimonial-text">Tu explicando fica muito fácil de entender</p>
+          <p class="testimonial-name">@Carlos</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOBRE O RAFAEL -->
+  <section>
+    <p class="section-label">Quem ensina</p>
+    <h2>Rafael<br>Ghisi.</h2>
+    <div class="about-inner">
+      <img class="about-img" src="https://fancy-naiad-c45c70.netlify.app/assets/rafael-ghisi.jpeg" alt="Rafael Ghisi" />
+      <div class="about-bio">
+        <p>Estudioso e apaixonado pelo Bitcoin há <strong>mais de 7 anos</strong>, Rafael acompanha todos os ciclos do mercado desde os primeiros movimentos expressivos do ativo. Ao longo desse tempo, desenvolveu um método claro para identificar os melhores momentos de entrada — sem depender de sorte ou especulação.</p>
+        <p>É <strong>certificado em cursos de finanças e investimentos</strong> e leva esse conhecimento para o maior número de pessoas possível por meio dos seus vídeos no TikTok, onde explica conceitos de investimento de forma direta e acessível.</p>
+        <p>Já ajudou inúmeros investidores iniciantes a entrar no Bitcoin com segurança — apenas com método, estudo e paciência.</p>
+        <p><strong>Sem promessas de enriquecimento rápido. Com estratégia sólida baseada em fundamentos reais.</strong></p>
+        <div class="about-badges">
+          <span class="badge">7 anos acompanhando Bitcoin</span>
+          <span class="badge">Certificado em Finanças e Investimentos</span>
+          <span class="badge badge-tiktok">▶ @rafaghisi_ no TikTok</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTA -->
+  <section>
+    <p class="section-label">A Oferta</p>
+    <h2>Tudo que<br>você precisa.</h2>
+    <div class="offer-box">
+      <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom: 4px;">Um curso completo em vídeo, pensado para quem começa do zero e quer tomar decisões de investimento com base em conhecimento real — não em sorte.</p>
+      <ul class="offer-list">
+        <li>Módulos em vídeo, assista no seu ritmo</li>
+        <li>Fundamentos da Escola Austríaca de Economia</li>
+        <li>Método de análise de timing de entrada</li>
+        <li>Como investir com privacidade na prática</li>
+        <li>Acesso imediato após a compra</li>
+        <li>Garantia incondicional de 7 dias</li>
+      </ul>
+      <div class="offer-price">
+        <span class="offer-promo-tag">Valor de Acesso</span>
+        <del>De R$ 147,00</del>
+        <span class="big">R$ 39,90</span>
+        <span class="offer-promo-tag">Promoção por tempo limitado</span>
+      </div>
+      <a class="btn-primary" href="https://pay.hotmart.com/B105030058Y" style="width:100%; text-align:center; display:block;">Quero aprender a entrar no momento certo</a>
+      <p class="offer-guarantee">Garantia de 7 dias — devolução total, sem perguntas</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <p class="section-label">Dúvidas</p>
+    <h2>Perguntas<br>frequentes.</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Preciso saber algo sobre Bitcoin para começar?</span>
+          <span class="icon">+</span>
+        </div>
+        <p class="faq-a">Não. O curso foi criado para iniciantes completos. Começamos do zero e avançamos passo a passo.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>O que é a Escola Austríaca de Economia?</span>
+          <span class="icon">+</span>
+        </div>
+        <p class="faq-a">É uma corrente econômica que explica o valor dos bens com base na preferência subjetiva das pessoas. No curso, você vai entender como isso se aplica diretamente ao Bitcoin e por que ele tem valor real.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Como funciona o acesso ao curso?</span>
+          <span class="icon">+</span>
+        </div>
+        <p class="faq-a">Após a confirmação do pagamento, você recebe um e-mail com acesso à plataforma de vídeos. Simples assim.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>E se eu não gostar do curso?</span>
+          <span class="icon">+</span>
+        </div>
+        <p class="faq-a">Você tem 7 dias de garantia total. Se não estiver satisfeito por qualquer motivo, é só pedir o reembolso — devolução integral, sem burocracia.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>O curso ensina a investir de forma anônima?</span>
+          <span class="icon">+</span>
+        </div>
+        <p class="faq-a">Sim. Um dos módulos é dedicado a ensinar, na prática, como comprar Bitcoin preservando sua privacidade financeira de forma segura e legal.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="final-cta">
+    <h2>Comece agora.<br>Invista certo.</h2>
+    <p>Acesso imediato por R$ 39,90 — com garantia de 7 dias.</p>
+    <a class="btn-primary" href="https://pay.hotmart.com/B105030058Y">Inscreva-se no Curso</a>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer-bar">
+    Este curso é educacional. Investimentos envolvem riscos e resultados passados não garantem ganhos futuros.
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Rafael Ghisi</span>
+    <span>© 2025 Rafael Ghisi. Todos os direitos reservados.</span>
+  </footer>
+
+  <script>
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      item.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>
